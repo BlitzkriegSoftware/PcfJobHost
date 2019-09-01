@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ExampleJob</name>
+    </assembly>
+    <members>
+        <member name="T:ExampleJob.ExampleJob">
+            <summary>
+            A Very Basic Example of a job that does one unit-of-work
+            </summary>
+        </member>
+        <member name="M:ExampleJob.ExampleJob.#ctor">
+            <summary>
+            Empty CTOR must be public
+            </summary>
+        </member>
+        <member name="M:ExampleJob.ExampleJob.Execute(Quartz.IJobExecutionContext)">
+            <summary>
+            Implemenation of IJob
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PcfJobHostApp</name>
+    </assembly>
+    <members>
+        <member name="T:PcfJobHostApp.Engine.ConfigurationDumper">
+            <summary>
+            This dumps assembly and configuration info, which is useful for debugging
+            </summary>
+        </member>
+        <member name="M:PcfJobHostApp.Engine.ConfigurationDumper.#ctor">
+            <summary>
+            Must be private for dependancy injection to find the right CTOR
+            </summary>
+        </member>
+        <member name="M:PcfJobHostApp.Engine.ConfigurationDumper.#ctor(Microsoft.Extensions.Logging.ILoggerFactory,Microsoft.Extensions.Configuration.IConfigurationRoot)">
+            <summary>
+            CTOR
+            </summary>
+            <param name="loggerFactory">ILoggerFactory</param>
+            <param name="config">IConfigurationRoot</param>
+        </member>
+        <member name="M:PcfJobHostApp.Engine.ConfigurationDumper.Run">
+            <summary>
+            Main Entry Point
+            </summary>
+        </member>
+        <member name="T:PcfJobHostApp.Engine.IConfigurationDumper">
+            <summary>
+            DI Interface Definition
+            </summary>
+        </member>
+        <member name="M:PcfJobHostApp.Engine.IConfigurationDumper.Run">
+            <summary>
+            Entry Method
+            </summary>
+        </member>
+        <member name="T:PcfJobHostApp.Engine.IJobEngine">
+            <summary>
+            DI: Job Engine
+            </summary>
+        </member>
+        <member name="M:PcfJobHostApp.Engine.IJobEngine.Run">
+            <summary>
+            Entry
+            </summary>
+        </member>
+        <member name="M:PcfJobHostApp.Engine.IJobEngine.Stop">
+            <summary>
+            Exit
+            </summary>
+        </member>
+        <member name="T:PcfJobHostApp.Engine.JobEngine">
+            <summary>
+            Job Engine
+            </summary>
+        </member>
+        <member name="M:PcfJobHostApp.Engine.JobEngine.#ctor">
+            <summary>
+            Public CTOR, DI does not work correctly, so we pull what we need from Program's statics
+            </summary>
+        </member>
+        <member name="M:PcfJobHostApp.Engine.JobEngine.Run">
+            <summary>
+            Entry
+            </summary>
+        </member>
+        <member name="M:PcfJobHostApp.Engine.JobEngine.Stop">
+            <summary>
+            Exit
+            </summary>
+        </member>
+        <member name="M:PcfJobHostApp.Engine.JobEngine.JobFactory">
+            <summary>
+            Set up jobs by spinning though Jobs folder
+            </summary>
+            <returns>Task</returns>
+        </member>
+        <member name="M:PcfJobHostApp.Engine.JobEngine.IJob_Get(System.Reflection.Assembly)">
+            <summary>
+            Get the type of the class that implements IJob
+            </summary>
+            <param name="assembly">Loaded assembly</param>
+            <returns>Job Class or Null</returns>
+        </member>
+        <member name="T:PcfJobHostApp.Libs.AssembyInfoHelper">
+            <summary>
+            Helper: Assembly Info
+            <para>Translates the <c>CustomAttributeData</c> to a usable string value</para>
+            </summary>
+        </member>
+        <member name="M:PcfJobHostApp.Libs.AssembyInfoHelper.TryParse(System.Reflection.CustomAttributeData,System.String@)">
+            <summary>
+            Try Parse a <c>System.Reflection.CustomAttributeData</c> into a string
+            </summary>
+            <param name="attribute">(this)</param>
+            <param name="s">Strng to parse into</param>
+            <returns>True if success</returns>
+        </member>
+        <member name="T:PcfJobHostApp.Libs.QuartzConsoleLogProvider">
+            <summary>
+            Wrap Microsoft.Extensions.Logging for Quartz
+            </summary>
+        </member>
+        <member name="M:PcfJobHostApp.Libs.QuartzConsoleLogProvider.#ctor(Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            CTOR w. Parameter
+            </summary>
+            <param name="loggerFactory">ILoggerFactory</param>
+        </member>
+        <member name="M:PcfJobHostApp.Libs.QuartzConsoleLogProvider.GetLogger(System.String)">
+            <summary>
+            Required Method to Get a Logger, for the given name
+            </summary>
+            <param name="name">Name</param>
+            <returns>Quartz.Logging.Logger</returns>
+        </member>
+        <member name="M:PcfJobHostApp.Libs.QuartzConsoleLogProvider.OpenNestedContext(System.String)">
+            <summary>
+            Not Used
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PcfJobHostApp.Libs.QuartzConsoleLogProvider.OpenMappedContext(System.String,System.String)">
+            <summary>
+            Not Used
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PcfJobHostApp.Models.JobInfo">
+            <summary>
+            This defines a job
+            </summary>
+        </member>
+        <member name="P:PcfJobHostApp.Models.JobInfo.NameSpace">
+            <summary>
+            The namespace to try and load dynamically
+            </summary>
+        </member>
+        <member name="P:PcfJobHostApp.Models.JobInfo.Schedule">
+            <summary>
+            Quatrz version of CRON Schedule
+            </summary>
+        </member>
+        <member name="P:PcfJobHostApp.Models.JobInfo.Parameters">
+            <summary>
+            Parameters to pass job, should not be NULL
+            </summary>
+        </member>
+        <member name="T:PcfJobHostApp.Models.Parameter">
+            <summary>
+            A Parameter Definition
+            </summary>
+        </member>
+        <member name="P:PcfJobHostApp.Models.Parameter.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:PcfJobHostApp.Models.Parameter.Value">
+            <summary>
+            Value
+            </summary>
+        </member>
+        <member name="M:PcfJobHostApp.Program.Detect_ShouldRun">
+            <summary>
+            Detect if the environment variable has been set to shutdown scheduler
+            </summary>
+            <returns>True should run, False should stop (environment variable set to 1)</returns>
+        </member>
+    </members>
+</doc>

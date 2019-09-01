@@ -1,0 +1,9 @@
+applications:
+- name: job-host
+  memory: 256mb
+  stack: cflinuxfs3
+  buildpack: https://github.com/cloudfoundry/dotnet-core-buildpack.git
+  path: ./bin/linux-x64
+  health-check-type: process
+  no-route: true
+  instances: 1

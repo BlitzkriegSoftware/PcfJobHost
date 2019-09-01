@@ -1,0 +1,14 @@
+{
+  "NameSpace": "ExampleJob",
+  "Schedule": "0/30 * * * * ?",
+  "Parameters": [
+    {
+      "Name": "Name3",
+      "Value": "Value3"
+    },
+    {
+      "Name": "Name4",
+      "Value": "Value4"
+    }
+  ]
+}
